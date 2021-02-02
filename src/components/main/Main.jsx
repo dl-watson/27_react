@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import List from "../list/List";
 import getCharacters from "../../services/getCharacters.js";
-import List from "../list/List.jsx";
 
 export default class Main extends Component {
   state = {
@@ -8,16 +8,11 @@ export default class Main extends Component {
   };
 
   componentDidMount() {
-    getCharacters().then((characters) => this.setState({ characters }));
+    return getCharacters().then((characters) => this.setState({ characters }));
   }
 
   render() {
     const { characters } = this.state;
-    return (
-      <>
-        <h1>test compile</h1>
-        <List characters={characters} />
-      </>
-    );
+    return <List characters={characters} />;
   }
 }

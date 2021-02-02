@@ -1,12 +1,27 @@
-import React, { Component } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 import ListItem from "../list-item/ListItem.jsx";
 
-export default class List extends Component {
-  render() {
+const List = ({ characters }) => {
+  const characterList = characters.map((character, index) => {
     return (
-      <>
-        <ListItem />
-      </>
+      <li key={index}>
+        <ListItem {...character} />
+      </li>
     );
-  }
-}
+  });
+
+  return <ul>{characterList}</ul>;
+};
+
+List.propTypes = {
+  characters: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+export default List;
