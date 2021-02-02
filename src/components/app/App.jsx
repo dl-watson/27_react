@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Main from "./main/Main";
+import Main from "../main/Main.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export default class App extends React.Component {
