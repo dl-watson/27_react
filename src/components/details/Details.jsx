@@ -9,8 +9,6 @@ export default class Details extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.match.params.name);
-    console.log("component did mount");
     return getCharacterByName(this.props.match.params.name).then((character) =>
       this.setState({ character })
     );
@@ -18,7 +16,7 @@ export default class Details extends Component {
 
   render() {
     const { character } = this.state;
-    return <ItemDetails character={character} />;
+    return character ? <ItemDetails character={character} /> : <>Loading...</>;
   }
 }
 
